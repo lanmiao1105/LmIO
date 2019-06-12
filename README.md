@@ -1,8 +1,8 @@
 # LmIO
-Java IO Wrapper
+Java IO包装库
 
-#### OutputStreamWrapper
-OutputStreamWrapper会先写入缓冲区，缓冲区满了自动写入输出流，或者调用`flush()`强制写入输出流
+#### OutputStream包装类--OutputStreamWrapper
+OutputStream包装类会先写入缓冲区，缓冲区满了自动写入输出流，或者调用`flush()`强制写入输出流
 ```
 OutputStreamWrapper outputStreamWrapper = null;
         try {
@@ -25,7 +25,7 @@ OutputStreamWrapper outputStreamWrapper = null;
         }
 ```
 
-#### InputStreamWrapper
+#### InputStream包装类--InputStreamWrapper
 InputStreamWrapper会先读满一个缓冲区，然后读取操作会从缓冲区中直接读取相应的字节数出来。
 如果所需要读取的字节数超出缓冲区剩余未读的字节数，则会再读满一个缓冲区，以此内推。
 ```
