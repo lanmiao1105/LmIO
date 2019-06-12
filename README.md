@@ -1,6 +1,10 @@
 # LmIO
 Java IO包装库
 
+- [x] OutputStream包装
+- [x] InputStream包装
+- [ ] 超时策略
+
 #### OutputStream包装类--OutputStreamWrapper
 OutputStream包装类会先写入缓冲区，缓冲区满了自动写入输出流，或者调用`flush()`强制写入输出流
 ```
@@ -47,7 +51,3 @@ InputStreamWrapper会先读满一个缓冲区，然后读取操作会从缓冲�
             if (inputStreamWrapper != null) inputStreamWrapper.close();
         }
 ```
-
-- [x] OutputStream包装
-- [x] InputStream包装
-- [] 超时策略
