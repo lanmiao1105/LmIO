@@ -7,6 +7,21 @@ dependencies {
 sourceCompatibility = "7"
 targetCompatibility = "7"
 
-tasks.withType(JavaCompile){
-    options.encoding = "UTF-8"
+tasks.withType(Javadoc) {
+    options{
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        links "http://docs.oracle.com/javase/7/docs/api"
+    }
+}
+
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = "lanmiao"
+    groupId = "com.lm"
+    artifactId = "io"
+    publishVersion = "1.0.0"
+    desc = "Java IO Wrapper"
+    website = "https://github.com/lanmiao1105/LmIO"
 }
