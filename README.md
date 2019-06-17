@@ -5,6 +5,10 @@ Java IO包装库
 - [x] InputStream包装
 - [ ] 超时策略
 
+#### 使用方式
+```
+    implementation 'com.lm:io:1.0.0'
+```
 #### OutputStream包装类--OutputStreamWrapper
 OutputStream包装类会先写入缓冲区，缓冲区满了自动写入输出流，或者调用`flush()`强制写入输出流
 ```
