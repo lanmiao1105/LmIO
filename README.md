@@ -1,5 +1,5 @@
 # LmIO
-Java IO包装库
+Java IO Wrapper
 
 - [x] OutputStream包装
 - [x] InputStream包装
