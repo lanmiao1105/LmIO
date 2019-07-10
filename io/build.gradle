@@ -21,7 +21,7 @@ publish {
     userOrg = "lanmiao"
     groupId = "com.lm"
     artifactId = "io"
-    publishVersion = "1.0.0"
+    publishVersion = "1.0.1"
     desc = "Java IO Wrapper"
     website = "https://github.com/lanmiao1105/LmIO"
 }
