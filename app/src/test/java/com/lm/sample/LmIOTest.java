@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertTrue;
 
@@ -501,6 +502,80 @@ public class LmIOTest {
             assertTrue(content.equals(read));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void testByte2Short() {
+        short content = Short.MIN_VALUE;
+
+        while (true) {
+            byte[] bLE = LmIO.short2BytesLE(content);
+            System.out.println("start testByte2Short ==> content=" + content);
+            System.out.println(LmIO.bytes2HexString(bLE));
+            short sLE = LmIO.bytes2ShortLE(bLE);
+            System.out.println(sLE);
+            assertTrue(content == sLE);
+
+            byte[] b = LmIO.short2Bytes(content);
+            System.out.println(LmIO.bytes2HexString(b));
+            short s = LmIO.bytes2Short(b);
+            System.out.println(s);
+            assertTrue(content == s);
+            System.out.println("end testByte2Short ==> content=" + content);
+
+            if (content == Short.MAX_VALUE) break;
+            content++;
+        }
+    }
+
+    @Test
+    public void testByte2Int() {
+        int start = Short.MAX_VALUE;
+        int end = Short.MAX_VALUE + start;
+
+        int content = start;
+        while (true) {
+            byte[] bLE = LmIO.int2BytesLE(content);
+            System.out.println(LmIO.bytes2HexString(bLE));
+            int iLE = LmIO.bytes2IntLE(bLE);
+            System.out.println(iLE);
+            assertTrue(content == iLE);
+
+            byte[] b = LmIO.int2Bytes(content);
+            System.out.println(LmIO.bytes2HexString(b));
+            int i = LmIO.bytes2Int(b);
+            System.out.println(i);
+            assertTrue(content == i);
+
+            if (content == end) break;
+            content++;
+        }
+    }
+
+    @Test
+    public void testByte2Long() {
+        long start = Long.MAX_VALUE-1000;
+        long end = start+1000;
+
+        long content = start;
+        while (true) {
+            System.out.println("testByte2Long ==> content="+content);
+            byte[] bLE = LmIO.long2BytesLE(content);
+            System.out.println(LmIO.bytes2HexString(bLE));
+            long lLE = LmIO.bytes2LongLE(bLE);
+            System.out.println(lLE);
+            assertTrue(content == lLE);
+
+            byte[] b = LmIO.long2Bytes(content);
+            System.out.println(LmIO.bytes2HexString(b));
+            long l = LmIO.bytes2Long(b);
+            System.out.println(l);
+            assertTrue(content == l);
+
+            if (content == end) break;
+            content++;
         }
     }
 }

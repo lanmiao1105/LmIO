@@ -86,6 +86,110 @@ public class LmIO {
 
 
     /**
+     * @param content byte[2]
+     * @return byte[2]转short (小端)
+     */
+    public static short bytes2ShortLE(byte[] content) {
+        if (content == null || content.length != 2) {
+            throw new IllegalArgumentException("bytes2ShortLE方法content参数长度必须为2");
+        }
+        return (short) ((content[0] & 0xFF) | (content[1] & 0xFF) << 8);
+    }
+
+    /**
+     * @param content byte[2]
+     * @return byte[2]转short (大端)
+     */
+    public static short bytes2Short(byte[] content) {
+        if (content == null || content.length != 2) {
+            throw new IllegalArgumentException("bytes2ShortLE方法content参数长度必须为2");
+        }
+        return (short) ((content[1] & 0xFF) | (content[0] & 0xFF) << 8);
+    }
+
+    /**
+     * @param content byte[4]
+     * @return byte[4]转int (小端)
+     */
+    public static int bytes2IntLE(byte[] content) {
+        if (content == null || content.length != 4) {
+            throw new IllegalArgumentException("bytes2Int方法content参数长度必须为4");
+        }
+        return (content[0] & 0xFF)
+                | (content[1] & 0xFF) << 8
+                | (content[2] & 0xFF) << 16
+                | (content[3] & 0xFF) << 24;
+    }
+
+    /**
+     * @param content byte[4]
+     * @return byte[4]转int (大端)
+     */
+    public static int bytes2Int(byte[] content) {
+        if (content == null || content.length != 4) {
+            throw new IllegalArgumentException("bytes2Int方法content参数长度必须为4");
+        }
+        return (content[3] & 0xFF)
+                | (content[2] & 0xFF) << 8
+                | (content[1] & 0xFF) << 16
+                | (content[0] & 0xFF) << 24;
+    }
+
+    /**
+     * @param content byte[8]
+     * @return byte[8]转long (小端)
+     */
+    public static long bytes2LongLE(byte[] content) {
+        if (content == null || content.length != 8) {
+            throw new IllegalArgumentException("bytes2LongLE方法content参数长度必须为8");
+        }
+        return (long) (content[0] & 0xFF)
+                | (long) (content[1] & 0xFF) << 8L
+                | (long) (content[2] & 0xFF) << 16L
+                | (long) (content[3] & 0xFF) << 24L
+                | (long) (content[4] & 0xFF) << 32L
+                | (long) (content[5] & 0xFF) << 40L
+                | (long) (content[6] & 0xFF) << 48L
+                | (long) (content[7] & 0xFF) << 56L;}
+
+    /**
+     * @param content byte[8]
+     * @return byte[8]转long (大端)
+     */
+    public static long bytes2Long(byte[] content) {
+        if (content == null || content.length != 8) {
+            throw new IllegalArgumentException("bytes2LongLE方法content参数长度必须为8");
+        }
+        return (long) (content[7] & 0xFF)
+                | (long) (content[6] & 0xFF) << 8L
+                | (long) (content[5] & 0xFF) << 16L
+                | (long) (content[4] & 0xFF) << 24L
+                | (long) (content[3] & 0xFF) << 32L
+                | (long) (content[2] & 0xFF) << 40L
+                | (long) (content[1] & 0xFF) << 48L
+                | (long) (content[0] & 0xFF) << 56L;
+    }
+
+    /**
+     * @param content byte[]
+     * @return byte[]转16进制字符串
+     */
+    public static String bytes2HexString(byte[] content) {
+        if (content == null || content.length == 0) return "";
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < content.length; i++) {
+            if (i > 0) stringBuilder.append(" ");
+
+            if ((content[i] & 0xff) < 0x10) stringBuilder.append("0");
+
+            stringBuilder.append(Integer.toHexString(content[i] & 0xFF));
+        }
+
+        return stringBuilder.toString().toUpperCase();
+    }
+
+    /**
      * @param content short
      * @return short转为byte[] (小端)
      */
